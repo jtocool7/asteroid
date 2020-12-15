@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="UTF-8">
   <title>Asteroid Fight</title>
   <style>
   #cvs{
     border:1px solid;
     width:100%;
-    height:100%;
+     height:100%;
    
   }
   </style>
@@ -17,5 +16,45 @@
   <canvas id=cvs>
     
   </canvas>
+  <script>
+  // const values
+  const state = {
+  current:0,
+  start:0,
+  playing:1,
+  end:2
+  }
+  
+  
+  const cvs = document.getElementById('cvs');
+  const cxt = cvs.getContext('2d');
+  // images
+  const button = new Image();
+  button.src = "https://static.thenounproject.com/png/1273647-200.png";
+  
+  const bg = new Image();
+  bg.src = "https://i.pinimg.com/originals/b7/7d/3f/b77d3fa2f40586f9ba3cbb9d39fb8d4a.png";
+  // draw function
+  function drawbg(){
+  this.x = 0, this.y = 0, this.width = cvs.width, this.height = cvs.height;
+  this.render = function(){
+  if(state.current == 0){
+  cxt.drawImage(bg,this.x,this.y,this.width,this.height);
+  }
+  }
+  }
+  
+ var drawbg = new drawbg(); 
+  
+  
+  // loop
+  
+  function loop(){
+  requestAnimationFrame(loop);
+  drawbg.render();
+  }
+  
+  loop();
+  </script>
 </body>
 </html>
