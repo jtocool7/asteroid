@@ -17,9 +17,12 @@
   
   .top{
     position:absolute;
-   background:green;
+
     width:30px;
     height:30px;
+    background:green;
+    top:200px;
+    left:31px;
   }
   </style>
 </head>
@@ -137,8 +140,8 @@
  // creating element
  const draw=document.createElement("div");
  document.body.appendChild(draw);
-draw.style.top = cvs.height / 2 * 2.64 + "px";
-draw.style.left = cvs.width / 10 + "px";
+//draw.style.top = cvs.height / 2 * 2.64  ;
+//draw.style.left = cvs.width / 10  ;
 
 draw.classList.add('top');
 
