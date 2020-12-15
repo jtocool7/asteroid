@@ -38,7 +38,7 @@
   }
   
  
-   const yPos = cvs.height / 2;
+   var yPos = cvs.height / 2;
    
    
   cvs.addEventListener('click', function() {
@@ -115,8 +115,15 @@
    }
    }
    }   
-  
-  
+   
+  document.addEventListener('keydown', function(evt){
+  if(yPos > 0 && evt.keyCode == 38){
+  yPos -= 5;
+  }
+  if(yPos < 120 && evt.keyCode == 40){
+  yPos += 5;
+  }
+  });
   
  var drawbg = new drawbg(); 
  var drawbutton = new drawbutton();
@@ -132,6 +139,7 @@
   drawWords();
    drawbutton.render();
    drawShip.render();
+   console.log(yPos);
   }
   
   loop();
