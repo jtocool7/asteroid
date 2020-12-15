@@ -35,8 +35,22 @@
   }
   
   
+  
   const cvs = document.getElementById('cvs');
   const cxt = cvs.getContext('2d');
+  
+  cvs.addEventListener('click', function() {
+   switch (state.current) {
+     case state.start:
+       state.current = state.playing;
+       break;
+       case state.end:
+       state.current = state.start;
+ break;
+
+   }
+  })
+  
   // images
   const button = new Image();
   button.src = "https://static.thenounproject.com/png/1273647-200.png";
@@ -53,25 +67,43 @@
   if(state.current == 0){
   cxt.drawImage(bg,this.x,this.y,this.width,this.height);
   }
+  if(state.current == 1){
+  cxt.drawImage(bg, this.x--, 0);
+       if (this.x <= -200) {
+         this.x = 0;
+       }
+  }
   }
   }
   
   function drawbutton(){
   this.x = cvs.width / 30, this.y = cvs.height / 2, this.width = 10, this.height = 10, this.y2 = cvs.height / 1 * 0.8;
   this.render = function(){
-  if(state.current == 0 || state.current == 1 || state.current == 2){
+  if( state.current == 1 || state.current == 2){
   cxt.drawImage(button,70,16,55,52,this.x,this.y,this.width,this.height);
   cxt.drawImage(button,70,126,55,52,this.x,this.y2,this.width,this.height);
   }
   }
   }
   
+  var txt1 = true;
+  
   function drawWords(){
+  if(state.current == 0){
   cxt.font = "16px Monaco";
-cxt.fillStyle = "#00ffff";
-cxt.font = "16px calibri";
+  cxt.fillStyle = "#00ffff";
+  cxt.font = "16px calibri";
   cxt.fillText('Asteroid Fight', cvs.width / 2 - 40, cvs.height / 2);
+  cxt.fillText('press to start',cvs.width / 2 - 35,cvs.height / 2 + 30)
+  
+  
   }
+  
+  }
+  
+      
+  
+  
   
  var drawbg = new drawbg(); 
  var drawbutton = new drawbutton();
