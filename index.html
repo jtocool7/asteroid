@@ -15,8 +15,9 @@
     display:none;
   }
   
-  .bw{
-    
+  #top{
+    position:absolute;
+    top:27%;
   }
   </style>
 </head>
@@ -24,7 +25,7 @@
   <canvas id=cvs>
     
   </canvas>
-  
+  <img id=top src="https://cdn.discordapp.com/attachments/743458313089581079/788484566507192340/upload4.png" alt="top button" width=30px height = 30px>
   <script>
   // const values
    const cvs = document.getElementById('cvs');
@@ -84,6 +85,7 @@
   
   function drawbutton(){
   this.x = cvs.width / 30, this.y = cvs.height / 2, this.width = 10, this.height = 10, this.y2 = cvs.height / 1 * 0.8;
+  
   this.render = function(){
   if( state.current == 1 || state.current == 2){
   cxt.drawImage(button,70,16,55,52,this.x,this.y,this.width,this.height);
@@ -116,14 +118,8 @@
    }
    }   
    
-  document.addEventListener('keydown', function(evt){
-  if(yPos > 0 && evt.keyCode == 38){
-  yPos -= 5;
-  }
-  if(yPos < 120 && evt.keyCode == 40){
-  yPos += 5;
-  }
-  });
+  
+  
   
  var drawbg = new drawbg(); 
  var drawbutton = new drawbutton();
