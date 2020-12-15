@@ -24,13 +24,17 @@
     top:50%;
     left:31px;
   }
+  
+  
   </style>
 </head>
 <body>
   <canvas id=cvs>
     
   </canvas>
+  <img id=topbut class=hide src="https://cdn.discordapp.com/attachments/743458313089581079/788484566507192340/upload4.png" alt="up button">
   
+  <img id=botbut class = hide src="https://cdn.discordapp.com/attachments/743458313089581079/788484531018924082/upload5.png" alt="bottom button">
   <script>
   // const values
    const cvs = document.getElementById('cvs');
@@ -93,8 +97,9 @@
   
   this.render = function(){
   if( state.current == 1 || state.current == 2){
-  cxt.drawImage(button,70,16,55,52,this.x,this.y,this.width,this.height);
-  cxt.drawImage(button,70,126,55,52,this.x,this.y2,this.width,this.height);
+  topbut.style.right = cvs.width / 30 + "px";
+  cxt.drawImage(botbut,this.x,this.y2,this.width,this.height);
+  cxt.drawImage(topbut,this.x,this.y,this.width,this.height);
   }
   }
   }
@@ -133,29 +138,39 @@
   }
   });
   
+  
+  
+  var cvsLeft = cvs.offsetLeft;
+  var cvsTop = cvs.offsetTop;
+  cvs.addEventListener('click', function(e){
+  var x = e.pageX - cvsLeft;
+  var y = e.pageY - cvsTop;
+  
+  console.log(x,y)
+  if(x >= 25 && yPos > 0 && x < 50 && y >= 190 && y <= 215){
+  yPos -= 5;
+  }
+  
+  })
+  
  var drawbg = new drawbg(); 
  var drawbutton = new drawbutton();
  var drawShip = new drawShip();
  
  // creating element
- const draw=document.createElement("div");
- document.body.appendChild(draw);
+ 
 //draw.style.top = cvs.height / 2 * 2.64  ;
 //draw.style.left = cvs.width / 10  ;
 
-draw.classList.add('top');
 
 
-draw.addEventListener('click', function(evt){
-  if(yPos > 0){
-  yPos -= 5;
-  }
-  
-  });
+
 
   // loop
   
-  function loop(){
+  
+  
+  function loop(e){
   
   requestAnimationFrame(loop);
   drawbutton.render();
@@ -163,7 +178,7 @@ draw.addEventListener('click', function(evt){
   drawWords();
    drawbutton.render();
    drawShip.render();
-   console.log(yPos);
+  
   }
   
   loop();
