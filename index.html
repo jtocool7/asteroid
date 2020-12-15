@@ -15,8 +15,9 @@
     display:none;
   }
   
-  #top{
+  .top{
     position:absolute;
+   border:16px solid;
     
   }
   </style>
@@ -25,7 +26,7 @@
   <canvas id=cvs>
     
   </canvas>
-  <img id=top src="https://cdn.discordapp.com/attachments/743458313089581079/788484566507192340/upload4.png" alt="top button" width=30px height = 30px>
+  
   <script>
   // const values
    const cvs = document.getElementById('cvs');
@@ -131,7 +132,15 @@
  var drawbg = new drawbg(); 
  var drawbutton = new drawbutton();
  var drawShip = new drawShip();
-  
+ 
+ // creating element
+ const draw=document.createElement("div");
+ document.body.appendChild(draw);
+draw.style.top = cvs.height / 2 * 2.64 + "px";
+draw.style.left = cvs.width / 30 + "px";
+
+draw.classList.add('top');
+
   // loop
   
   function loop(){
