@@ -147,7 +147,11 @@
   var y = e.pageY - cvsTop;
   
   console.log(x,y)
-  if(x >= 25 && yPos > 0 && x < 50 && y >= 190 && y <= 215){
+  //if(x >= 25 && yPos > 0 && x < 50 && y >= 190 && y <= 215){
+  //yPos -= 5;
+  //}
+  
+  if(x >= cvs.width / 14 && yPos > 0 && x < cvs.width / 6 && y >= cvs.height / 2 * 2.5 && y <= cvs.height / 2 * 2.9){
   yPos -= 5;
   }
   
