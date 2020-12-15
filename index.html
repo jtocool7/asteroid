@@ -10,12 +10,21 @@
      height:100%;
    
   }
+  
+  .hide{
+    display:none;
+  }
+  
+  .bw{
+    
+  }
   </style>
 </head>
 <body>
   <canvas id=cvs>
     
   </canvas>
+  
   <script>
   // const values
   const state = {
@@ -57,15 +66,24 @@
   }
   }
   
+  function drawWords(){
+  cxt.font = "16px Monaco";
+cxt.fillStyle = "#00ffff";
+cxt.font = "16px calibri";
+  cxt.fillText('Asteroid Fight', cvs.width / 2 - 40, cvs.height / 2);
+  }
+  
  var drawbg = new drawbg(); 
  var drawbutton = new drawbutton();
   
   // loop
   
   function loop(){
+  
   requestAnimationFrame(loop);
   drawbutton.render();
   drawbg.render();
+  drawWords();
    drawbutton.render();
   }
   
