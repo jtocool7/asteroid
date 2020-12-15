@@ -17,8 +17,9 @@
   
   .top{
     position:absolute;
-   border:16px solid;
-    
+   background:green;
+    width:30px;
+    height:30px;
   }
   </style>
 </head>
@@ -137,9 +138,17 @@
  const draw=document.createElement("div");
  document.body.appendChild(draw);
 draw.style.top = cvs.height / 2 * 2.64 + "px";
-draw.style.left = cvs.width / 30 + "px";
+draw.style.left = cvs.width / 10 + "px";
 
 draw.classList.add('top');
+
+
+draw.addEventListener('click', function(evt){
+  if(yPos > 0){
+  yPos -= 5;
+  }
+  
+  });
 
   // loop
   
