@@ -32,8 +32,11 @@
   const button = new Image();
   button.src = "https://static.thenounproject.com/png/1273647-200.png";
   
+  
+  const button2 = new Image();
+  button2.src = "https://static.thenounproject.com/png/1273647-200.png";
   const bg = new Image();
-  bg.src = "https://i.pinimg.com/originals/b7/7d/3f/b77d3fa2f40586f9ba3cbb9d39fb8d4a.png";
+  bg.src = "https://wallpaperaccess.com/full/471765.jpg";
   // draw function
   function drawbg(){
   this.x = 0, this.y = 0, this.width = cvs.width, this.height = cvs.height;
@@ -44,14 +47,26 @@
   }
   }
   
- var drawbg = new drawbg(); 
+  function drawbutton(){
+  this.x = cvs.width / 30, this.y = cvs.height / 2, this.width = 20, this.height = 20, this.y2 = cvs.height / 1 * 0.8;
+  this.render = function(){
+  if(state.current == 0 || state.current == 1 || state.current == 2){
+  cxt.drawImage(button,70,16,55,52,this.x,this.y,this.width,this.height);
+  cxt.drawImage(button,70,126,55,52,this.x,this.y2,this.width,this.height);
+  }
+  }
+  }
   
+ var drawbg = new drawbg(); 
+ var drawbutton = new drawbutton();
   
   // loop
   
   function loop(){
   requestAnimationFrame(loop);
+  drawbutton.render();
   drawbg.render();
+   drawbutton.render();
   }
   
   loop();
